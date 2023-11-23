@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.List;
 import java.util.ArrayList;
 
 public class ReaderXml implements Reader {
@@ -26,8 +27,8 @@ public class ReaderXml implements Reader {
         }
         return getDoramas(document);
     }
-    private ArrayList<Dorama> getDoramas(Document document){
-        ArrayList<Dorama> doramas = new ArrayList<>();
+    private List<Dorama> getDoramas(Document document){
+        List<Dorama> doramas = new ArrayList<>();
         Node root = document.getDocumentElement();
         NodeList doramaNodes = root.getChildNodes();
         for (int i = 0; i < doramaNodes.getLength(); i++) {
@@ -59,7 +60,7 @@ public class ReaderXml implements Reader {
         }
     }
     private void setGenresDorama(Node info, Dorama dorama){
-        ArrayList<String> genres = new ArrayList<>();
+        List<String> genres = new ArrayList<>();
         NodeList genresNode = info.getChildNodes();
         for (int i = 0; i < genresNode.getLength(); i++){
             Node genre = genresNode.item(i);

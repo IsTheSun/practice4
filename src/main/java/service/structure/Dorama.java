@@ -1,10 +1,11 @@
 package service.structure;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class Dorama {
     private  String name, date, country;
-    private ArrayList<String> genres;
+    private List<String> genres;
     public Dorama(){
         name = null;
         date = null;
@@ -29,10 +30,10 @@ public class Dorama {
     public void setCountry(String country){
         this.country = country;
     }
-    public ArrayList<String> getGenres(){
+    public List<String> getGenres(){
         return genres;
     }
-    public void setGenres(ArrayList<String> genres){
+    public void setGenres(List<String> genres){
         this.genres = genres;
     }
 }
