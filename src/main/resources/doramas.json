@@ -1,0 +1,94 @@
+{
+  "countries": [
+    {
+      "country": {
+        "name": "South Korea",
+        "doramas": [
+          {
+            "name": "King of the Land",
+            "date": "17 Jun 2023",
+            "genres": [
+              "Сomedy",
+              "Romance"
+            ]
+          },
+          {
+            "name": "Business Proposal",
+            "date": "28 Feb 2022",
+            "genres": [
+              "Drama",
+              "Romance",
+              "Сomedy"
+            ]
+          },
+          {
+            "name": "A Time Called You",
+            "date": "08 Sep 2023",
+            "genres": [
+              "Romance",
+              "Fantasy",
+              "Detective"
+            ]
+          },
+	  {
+            "name": "Island",
+            "date": "30 Dec 2022",
+            "genres": [
+              "Thriller",
+              "Horror",
+              "Fantasy"
+            ]
+          },
+	  {
+            "name": "W - Two Worlds",
+            "date": "20 Jul 2016",
+            "genres": [
+              "Fantasy",
+              "Romance",
+              "Thriller"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "country": {
+        "name": "China",
+        "doramas": [
+          {
+            "name": "Hidden Love",
+            "date": "20 Jun 2023",
+            "genres": [
+              "Сomedy",
+              "Romance"
+            ]
+          },
+	  {
+            "name": "Lighter and Princess",
+            "date": "03 Nov 2022",
+            "genres": [
+              "Drama",
+              "Romance"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "country": {
+        "name": "Thailand",
+        "doramas": [
+          {
+            "name": "Boys Over Flowers",
+            "date": "18 Dec 2021",
+            "genres": [
+              "Сomedy",
+              "Drama",
+              "Romance"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

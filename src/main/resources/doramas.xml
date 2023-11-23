@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doramas>
+	<dorama id="0">
+		<name>King of the Land</name>
+		<date>17 Jun 2023</date>
+		<country>South Korea</country>
+		<genres>
+			<genre>Сomedy</genre>
+			<genre>Romance</genre>
+		</genres>
+	</dorama>
+	<dorama id="1">
+		<name>Business Proposal</name>
+		<date>28 Feb 2022</date>
+		<country>South Korea</country>
+		<genres>
+			<genre>Drama</genre>
+			<genre>Romance</genre>
+			<genre>Сomedy</genre>
+		</genres>
+	</dorama>
+	<dorama id="2">
+		<name>A Time Called You</name>
+		<date>08 Sep 2023</date>
+		<country>South Korea</country>
+		<genres>
+			<genre>Romance</genre>
+			<genre>Fantasy</genre>
+			<genre>Detective</genre>
+		</genres>
+	</dorama>
+	<dorama id="3">
+		<name>Island</name>
+		<date>30 Dec 2022</date>
+		<country>South Korea</country>
+		<genres>
+			<genre>Thriller</genre>
+			<genre>Horror</genre>
+			<genre>Fantasy</genre>
+		</genres>
+	</dorama>
+	<dorama id="4">
+		<name>W - Two Worlds</name>
+		<date>20 Jul 2016</date>
+		<country>South Korea</country>
+		<genres>
+			<genre>Fantasy</genre>
+			<genre>Romance</genre>
+			<genre>Thriller</genre>
+		</genres>
+	</dorama>
+	<dorama id="5">
+		<name>Hidden Love</name>
+		<date>20 Jun 2023</date>
+		<country>China</country>
+		<genres>
+			<genre>Сomedy</genre>
+			<genre>Romance</genre>
+		</genres>
+	</dorama>
+	<dorama id="6">
+		<name>Lighter and Princess</name>
+		<date>03 Nov 2022</date>
+		<country>China</country>
+		<genres>
+			<genre>Drama</genre>
+			<genre>Romance</genre>
+		</genres>
+	</dorama>
+	<dorama id="7">
+		<name>Boys Over Flowers</name>
+		<date>18 Dec 2021</date>
+		<country>Thailand</country>
+		<genres>
+			<genre>Сomedy</genre>
+			<genre>Drama</genre>
+			<genre>Romance</genre>
+		</genres>
+	</dorama>
+</doramas>
