@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doramas>
+	<dorama id="0">
+		<name>Король земли</name>
+		<date>17 Jun 2023</date>
+		<country>Южная Корея</country>
+		<genres>
+			<genre>Комедия</genre>
+			<genre>Романтика</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Ким Тэ-юн</name>
+				<age>28</age>
+			</character>
+			<character>
+				<name>Пак Сон-ги</name>
+				<age>25</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="1">
+		<name>Деловое предложение</name>
+		<date>28 Feb 2022</date>
+		<country>Южная Корея</country>
+		<genres>
+			<genre>Драма</genre>
+			<genre>Романтика</genre>
+			<genre>Комедия</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Кан Чжа-юль</name>
+				<age>30</age>
+			</character>
+			<character>
+				<name>Им Соо-чжин</name>
+				<age>28</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="2">
+		<name>Время взывает к тебе</name>
+		<date>08 Sep 2023</date>
+		<country>Южная Корея</country>
+		<genres>
+			<genre>Романтика</genre>
+			<genre>Фантастика</genre>
+			<genre>Детектив</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Ли Джу-ху</name>
+				<age>31</age>
+			</character>
+			<character>
+				<name>Ким Мин-сок</name>
+				<age>29</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="3">
+		<name>Остров</name>
+		<date>30 Dec 2022</date>
+		<country>Южная Корея</country>
+		<genres>
+			<genre>Триллер</genre>
+			<genre>Ужасы</genre>
+			<genre>Фантастика</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Юн Чжэ-ин</name>
+				<age>27</age>
+			</character>
+			<character>
+				<name>Пак Чжи-у</name>
+				<age>30</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="4">
+		<name>Меж двух миров</name>
+		<date>20 Jul 2016</date>
+		<country>Южная Корея</country>
+		<genres>
+			<genre>Фантастика</genre>
+			<genre>Романтика</genre>
+			<genre>Триллер</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Ли Чжон-сук</name>
+				<age>32</age>
+			</character>
+			<character>
+				<name>Чхве Ён-джа</name>
+				<age>30</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="5">
+		<name>Скрытая любовь</name>
+		<date>20 Jun 2023</date>
+		<country>Китай</country>
+		<genres>
+			<genre>Комедия</genre>
+			<genre>Романтика</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Цзян Тянь</name>
+				<age>26</age>
+			</character>
+			<character>
+				<name>Ли Шуай</name>
+				<age>28</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="6">
+		<name>Зажигалка и принцесса</name>
+		<date>03 Nov 2022</date>
+		<country>Китай</country>
+		<genres>
+			<genre>Драма</genre>
+			<genre>Романтика</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Фэн Цзы Лунь</name>
+				<age>30</age>
+			</character>
+			<character>
+				<name>Ли Шао Цзюнь</name>
+				<age>28</age>
+			</character>
+		</characters>
+	</dorama>
+	<dorama id="7">
+		<name>Цветочная четверка</name>
+		<date>18 Dec 2021</date>
+		<country>Тайланд</country>
+		<genres>
+			<genre>Комедия</genre>
+			<genre>Драма</genre>
+			<genre>Романтика</genre>
+		</genres>
+		<characters>
+			<character>
+				<name>Пимпака Таннават</name>
+				<age>25</age>
+			</character>
+			<character>
+				<name>Май Чарит</name>
+				<age>27</age>
+			</character>
+		</characters>
+	</dorama>
+</doramas>
