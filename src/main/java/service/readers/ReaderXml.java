@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ReaderXml implements Reader {
-    @Override
+public class ReaderXml{
     public Object readFile(String filename){
         DocumentBuilder documentBuilder = null;
         Document document = null;
