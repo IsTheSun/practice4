@@ -1,5 +1,4 @@
 import service.structure.Dorama;
-import service.structure.Character;
 import service.operations.Operations;
 
 import org.junit.jupiter.api.Test;
