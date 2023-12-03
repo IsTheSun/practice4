@@ -1,6 +1,7 @@
 package service.operations;
 
 import service.structure.Dorama;
+import service.structure.Character;
 
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -83,18 +84,23 @@ public class Operations {
         }
     }
 
-    public static String listToString(List<Dorama> doramas){
+    public static String listToString(List<Dorama> doramas) {
         try {
-            StringBuilder str = new StringBuilder();
-            doramas.forEach(x -> str.append("Имя: " + x.getName() + "\n" +
-                    "Дата: " + x.getDate() + "\n" +
-                    "Страна: " + x.getCountry() + "\n" +
-                    "Жанры: " + x.getGenres() + "\n\n"));
-
-            return str.toString();
-        }catch (Exception exception){
+            return doramas.stream()
+                    .map(dorama -> String.format("Имя: %s%nДата: %s%nСтрана: %s%nЖанры: %s%nПерсонажи:%n%s%n",
+                            dorama.getName(), dorama.getDate(), dorama.getCountry(), dorama.getGenres(),
+                            charactersToString(dorama.getCharacters())))
+                    .collect(Collectors.joining());
+        } catch (Exception exception) {
             System.err.println(exception.getMessage());
             return "";
         }
+    }
+
+    private static String charactersToString(List<Character> characters) {
+        return characters.stream()
+                .map(character -> String.format("\tИмя персонажа: %s%n\tВозраст: %d%n",
+                        character.getName(), character.getAge()))
+                .collect(Collectors.joining());
     }
 }
