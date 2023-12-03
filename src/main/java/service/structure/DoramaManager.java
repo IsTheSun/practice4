@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class DoramaManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(DoramaManager.class);
+    private static final String FILENAME = "src\\test\\resources\\doramas.xml";
     private List<Dorama> doramas;
 
     public void run() {
@@ -19,7 +20,6 @@ public class DoramaManager {
 
     private void initializeDoramas() {
         ReaderXml reader = new ReaderXml();
-        final String FILENAME = "src\\test\\resources\\doramas.xml";
         doramas = (List<Dorama>) reader.readFile(FILENAME);
     }
 
