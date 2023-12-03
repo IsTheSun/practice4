@@ -1,6 +1,7 @@
 package service.readers;
 
 import service.structure.Dorama;
+import service.structure.Character;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -16,15 +17,13 @@ import java.util.ArrayList;
 
 public class ReaderXml{
     public Object readFile(String filename){
-        DocumentBuilder documentBuilder = null;
-        Document document = null;
         try {
-            documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            document = documentBuilder.parse(filename);
+            DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document document = documentBuilder.parse(filename);
+            return getDoramas(document);
         } catch (ParserConfigurationException | SAXException | IOException e) {
             throw new RuntimeException(e);
         }
-        return getDoramas(document);
     }
     private List<Dorama> getDoramas(Document document){
         List<Dorama> doramas = new ArrayList<>();
@@ -53,9 +52,10 @@ public class ReaderXml{
     private void switchInfo(Node info, Dorama dorama){
         switch (info.getNodeName()){
             case "name" -> dorama.setName(info.getTextContent());
-            case "date" -> dorama.setData(info.getTextContent());
+            case "date" -> dorama.setDate(info.getTextContent());
             case "country" -> dorama.setCountry(info.getTextContent());
             case "genres" -> setGenresDorama(info, dorama);
+            case "characters" -> setCharacters(info, dorama);
         }
     }
     private void setGenresDorama(Node info, Dorama dorama){
@@ -67,5 +67,35 @@ public class ReaderXml{
                 genres.add(genre.getTextContent());
         }
         dorama.setGenres(genres);
+    }
+    private void setCharacters(Node info, Dorama dorama) {
+        List<Character> characters = new ArrayList<>();
+        NodeList charactersNode = info.getChildNodes();
+        for (int i = 0; i < charactersNode.getLength(); i++) {
+            Node characterNode = charactersNode.item(i);
+            if (characterNode.getNodeType() != Node.TEXT_NODE) {
+                characters.add(getCharacter(characterNode));
+            }
+        }
+        dorama.setCharacters(characters);
+    }
+    private Character getCharacter(Node characterNode) {
+        Character character = new Character();
+        NodeList characterInfo = characterNode.getChildNodes();
+        for (int i = 0; i < characterInfo.getLength(); i++) {
+            Node info = characterInfo.item(i);
+            if (info.getNodeType() != Node.TEXT_NODE) {
+                switchCharacterInfo(info, character);
+            }
+        }
+        return character;
+    }
+
+    private void switchCharacterInfo(Node info, Character character) {
+        String nodeName = info.getNodeName();
+        switch (nodeName) {
+            case "name" -> character.setName(info.getTextContent());
+            case "age" -> character.setAge(Integer.parseInt(info.getTextContent()));
+        }
     }
 }

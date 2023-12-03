@@ -6,44 +6,95 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 import java.time.format.DateTimeFormatter;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Operations {
+
     public static List<Dorama> sortDoramasByName(List<Dorama> doramas){
-        return doramas.stream()
-                .sorted(Comparator.comparing(Dorama::getName))
-                .collect(Collectors.toList());
+        try {
+            return doramas.stream()
+                    .sorted(Comparator.comparing(Dorama::getName))
+                    .toList();
+        }catch (Exception exception){
+            System.err.println(exception.getMessage());
+            return List.of();
+        }
     }
+
     public static List<String> getChineseDoramas(List<Dorama> doramas){
-        return doramas.stream()
-                .filter(d -> "China".equals(d.getCountry()))
+        try {return doramas.stream()
+                .filter(dorama -> "Китай".equals(dorama.getCountry()))
                 .map(Dorama::getName)
-                .collect(Collectors.toList());
+                .toList();
+        }catch (Exception exception){
+            System.err.println(exception.getMessage());
+            return List.of();
+        }
     }
-    public static List<String> formatDramaDates(List<Dorama> doramas){
-        DateTimeFormatter input = DateTimeFormatter.ofPattern("dd MMM yyy", Locale.ENGLISH);
-        DateTimeFormatter output = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return doramas.stream()
-                .map(d -> LocalDate.parse(d.getData(), input).format(output))
-                .collect(Collectors.toList());
+
+    public static List<String> formatDoramaDates(List<Dorama> doramas){
+        try {
+            return doramas.stream()
+                    .map(Operations::formatDate)
+                    .toList();
+        }catch (Exception exception){
+            exception.printStackTrace();
+            return List.of();
+        }
     }
+
+    private static String formatDate (Dorama dorama){
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        try {
+            LocalDate date = LocalDate.parse(dorama.getDate(), inputFormatter);
+            return date.format(outputFormatter);
+        } catch (Exception e) {
+            System.err.println("Error parsing date for Dorama");
+            return "N/A";
+        }
+    }
+
     public static List<String> getСomedyDramas(List<Dorama> doramas){
-        return doramas.stream()
-                .filter(d -> d.getGenres().contains("Сomedy"))
-                .map(Dorama::getName)
-                .collect(Collectors.toList());
+        try {
+            return doramas.stream()
+                    .filter(dorama -> dorama.getGenres().contains("Комедия"))
+                    .map(Dorama::getName)
+                    .toList();
+        }catch (Exception exception){
+            System.err.println(exception.getMessage());
+            return List.of();
+        }
     }
+
     public static boolean hasGenreDrama(List<Dorama> doramas, String genre){
-        return doramas.stream()
-                .anyMatch(d -> d.getGenres().contains(genre));
+        try {
+            Set<String> uniqueGenres = doramas.stream()
+                    .flatMap(dorama -> dorama.getGenres().stream())
+                    .collect(Collectors.toSet());
+
+            return uniqueGenres.contains(genre);
+        }catch (Exception exception){
+            System.err.println(exception.getMessage());
+            return false;
+        }
     }
+
     public static String listToString(List<Dorama> doramas){
-        StringBuilder str = new StringBuilder();
-        doramas.forEach(x -> str.append("Имя: " + x.getName() + "\n" +
-                "Дата: " + x.getData() + "\n" +
-                "Страна: " + x.getCountry() + "\n" +
-                "Жанры: " + x.getGenres() + "\n\n"));
-        return str.toString();
+        try {
+            StringBuilder str = new StringBuilder();
+            doramas.forEach(x -> str.append("Имя: " + x.getName() + "\n" +
+                    "Дата: " + x.getDate() + "\n" +
+                    "Страна: " + x.getCountry() + "\n" +
+                    "Жанры: " + x.getGenres() + "\n\n"));
+
+            return str.toString();
+        }catch (Exception exception){
+            System.err.println(exception.getMessage());
+            return "";
+        }
     }
 }
