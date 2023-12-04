@@ -54,8 +54,8 @@ public class Operations {
             LocalDate date = LocalDate.parse(dorama.getDate(), inputFormatter);
             return date.format(outputFormatter);
         } catch (Exception e) {
-            System.err.println("Error parsing date for Dorama");
-            return "N/A";
+            System.err.println("Ошибка при разборе данных для Дорамы");
+            return null;
         }
     }
 

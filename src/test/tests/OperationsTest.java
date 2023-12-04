@@ -1,4 +1,5 @@
 import service.structure.Dorama;
+import service.structure.Character;
 import service.operations.Operations;
 
 import org.junit.jupiter.api.Test;
@@ -93,14 +94,35 @@ public class OperationsTest {
         dorama.setDate("01 Jan 2023");
         dorama.setCountry("Китай");
         dorama.setGenres(List.of("Драма", "Комедия"));
+
+        List<Character> characters = new ArrayList<>();
+
+        Character character1 = new Character();
+        character1.setName("Персонаж 1");
+        character1.setAge(25);
+        characters.add(character1);
+
+        Character character2 = new Character();
+        character2.setName("Персонаж 2");
+        character2.setAge(30);
+        characters.add(character2);
+
+        dorama.setCharacters(characters);
+
         doramas.add(dorama);
 
         String result = Operations.listToString(doramas);
 
-        String expected = "Имя: Дорама 1\n" +
-                "Дата: 01 Jan 2023\n" +
-                "Страна: Китай\n" +
-                "Жанры: [Драма, Комедия]\n\n";
+        String expected = "Имя: Дорама 1\r\n" +
+                "Дата: 01 Jan 2023\r\n" +
+                "Страна: Китай\r\n" +
+                "Жанры: [Драма, Комедия]\r\n" +
+                "Персонажи:\r\n" +
+                "\tИмя персонажа: Персонаж 1\r\n" +
+                "\tВозраст: 25\r\n" +
+                "\tИмя персонажа: Персонаж 2\r\n" +
+                "\tВозраст: 30\r\n\r\n";
+
         assertEquals(expected, result);
     }
 }
