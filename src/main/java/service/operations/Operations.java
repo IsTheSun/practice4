@@ -1,106 +1,82 @@
 package service.operations;
 
 import service.structure.Dorama;
-import service.structure.Character;
 
-import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
+@FieldDefaults(makeFinal = true)
 public class Operations {
+    String COUNTRY = "Китай";
+    String COMEDY_GENRE = "Комедия";
 
-    public static List<Dorama> sortDoramasByName(List<Dorama> doramas){
-        try {
-            return doramas.stream()
-                    .sorted(Comparator.comparing(Dorama::getName))
-                    .toList();
-        }catch (Exception exception){
-            System.err.println(exception.getMessage());
-            return List.of();
-        }
+    /**
+     * Сортирует дорамы по имени в алфавитном порядке.
+     * @param doramas Список дорам
+     * @return Список отсортированных имен дорам
+     */
+    public List<String> sortDoramasByName(List<Dorama> doramas){
+        return doramas.stream()
+                .map(Dorama::getName)
+                .sorted()
+                .toList();
     }
 
-    public static List<String> getChineseDoramas(List<Dorama> doramas){
-        try {return doramas.stream()
-                .filter(dorama -> "Китай".equals(dorama.getCountry()))
+    /**
+     * Получает имена китайских дорам из списка.
+     * @param doramas Список дорам
+     * @return Список имен китайских дорам
+     */
+    public List<String> getChineseDoramas(List<Dorama> doramas){
+        return doramas.stream()
+                .filter(dorama -> COUNTRY.equals(dorama.getCountry()))
                 .map(Dorama::getName)
                 .toList();
-        }catch (Exception exception){
-            System.err.println(exception.getMessage());
-            return List.of();
-        }
     }
 
-    public static List<String> formatDoramaDates(List<Dorama> doramas){
-        try {
-            return doramas.stream()
-                    .map(Operations::formatDate)
-                    .toList();
-        }catch (Exception exception){
-            exception.printStackTrace();
-            return List.of();
-        }
+    /**
+     * Форматирует даты дорам в соответствии с заданными шаблонами.
+     * @param doramas Список дорам
+     * @return Список отформатированных дат
+     */
+    public List<String> formatDoramaDates(List<Dorama> doramas) {
+        return doramas.stream()
+                .map(dorama -> dorama.getDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")))
+                .toList();
     }
 
-    private static String formatDate (Dorama dorama){
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-
-        try {
-            LocalDate date = LocalDate.parse(dorama.getDate(), inputFormatter);
-            return date.format(outputFormatter);
-        } catch (Exception e) {
-            System.err.println("Ошибка при разборе данных для Дорамы");
-            return null;
-        }
+    /**
+     * Получает имена дорам, относящихся к жанру "Комедия".
+     * @param doramas Список дорам
+     * @return Список имен комедийных дорам
+     */
+    public List<String> getСomedyDramas(List<Dorama> doramas){
+        return doramas.stream()
+                .filter(dorama -> dorama.getGenres().contains(COMEDY_GENRE))
+                .map(Dorama::getName)
+                .toList();
     }
 
-    public static List<String> getСomedyDramas(List<Dorama> doramas){
-        try {
-            return doramas.stream()
-                    .filter(dorama -> dorama.getGenres().contains("Комедия"))
-                    .map(Dorama::getName)
-                    .toList();
-        }catch (Exception exception){
-            System.err.println(exception.getMessage());
-            return List.of();
-        }
-    }
-
-    public static boolean hasGenreDrama(List<Dorama> doramas, String genre){
+    /**
+     * Проверяет, существует ли дорама с заданным жанром.
+     * @param doramas Список дорам
+     * @param genre Жанр для проверки
+     * @return true, если существует дорама с указанным жанром, иначе false
+     */
+    public boolean hasGenreDrama(List<Dorama> doramas, String genre){
         try {
             Set<String> uniqueGenres = doramas.stream()
                     .flatMap(dorama -> dorama.getGenres().stream())
                     .collect(Collectors.toSet());
 
             return uniqueGenres.contains(genre);
-        }catch (Exception exception){
-            System.err.println(exception.getMessage());
-            return false;
-        }
-    }
-
-    public static String listToString(List<Dorama> doramas) {
-        try {
-            return doramas.stream()
-                    .map(dorama -> String.format("Имя: %s%nДата: %s%nСтрана: %s%nЖанры: %s%nПерсонажи:%n%s%n",
-                            dorama.getName(), dorama.getDate(), dorama.getCountry(), dorama.getGenres(),
-                            charactersToString(dorama.getCharacters())))
-                    .collect(Collectors.joining());
         } catch (Exception exception) {
-            System.err.println(exception.getMessage());
-            return "";
+            throw new RuntimeException("Ошибка при определении жанра Дорамы", exception);
         }
-    }
-
-    private static String charactersToString(List<Character> characters) {
-        return characters.stream()
-                .map(character -> String.format("\tИмя персонажа: %s%n\tВозраст: %d%n",
-                        character.getName(), character.getAge()))
-                .collect(Collectors.joining());
     }
 }
